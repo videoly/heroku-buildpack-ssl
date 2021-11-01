@@ -3,9 +3,13 @@
 
 BUILD_DIR=$1
 RDS_CERT_URL=https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+LETSENCRYPT_CERT_URL=https://letsencrypt.org/certs/isrgrootx1.pem
 
 mkdir -p $BUILD_DIR/certs
-echo "downloading ${RDS_CERT_URL}"
 
+echo "downloading ${RDS_CERT_URL}"
 curl --silent ${RDS_CERT_URL} > $BUILD_DIR/certs/rds-global-bundle.pem
+
+echo "downloading ${LETSENCRYPT_CERT_URL}"
+curl --silent ${LETSENCRYPT_CERT_URL} > $BUILD_DIR/certs/isrgrootx1.pem
 exit $?
