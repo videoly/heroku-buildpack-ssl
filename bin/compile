@@ -4,7 +4,8 @@
 BUILD_DIR=$1
 RDS_CERT_URL=https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
 
+mkdir -p $BUILD_DIR/certs
 echo "downloading ${RDS_CERT_URL}"
 
-curl --silent ${RDS_CERT_URL} > $BUILD_DIR/rds-global-bundle.pem
+curl --silent ${RDS_CERT_URL} > $BUILD_DIR/certs/rds-global-bundle.pem
 exit $?
