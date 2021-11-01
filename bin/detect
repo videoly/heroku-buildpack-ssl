@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "SSL Certs"
+exit 0
