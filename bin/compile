@@ -2,6 +2,7 @@
 # bin/compile <build-dir> <cache-dir>
 
 BUILD_DIR=$1
+BIN_DIR=$(cd $(dirname $0); pwd)
 RDS_CERT_PATH="$BIN_DIR/certs/rds-global-bundle.pem"
 LETSENCRYPT_CERT_PATH="$BIN_DIR/certs/isrgrootx1.pem"
 
