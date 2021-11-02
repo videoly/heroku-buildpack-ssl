@@ -12,6 +12,6 @@ echo "copying ${RDS_CERT_PATH}"
 cp ${RDS_CERT_PATH} $BUILD_DIR/certs/rds-global-bundle.pem
 
 echo "copying ${LETSENCRYPT_CERT_PATH}"
-cp ${LETSENCRYPT_CERT_PATH} > $BUILD_DIR/certs/isrgrootx1.pem
+cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/certs/isrgrootx1.pem
 
 exit $?
