@@ -12,7 +12,7 @@ unset GIT_DIR     # Avoid GIT_DIR leak from previous build steps
 BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
-BP_DIR=$(cd "$(dirname "${0:-}")"; cd ..; pwd)
+BP_DIR=$(cd $(dirname $0); pwd)
 
 RDS_CERT_PATH="$BP_DIR/certs/rds-global-bundle.pem"
 LETSENCRYPT_CERT_PATH="$BP_DIR/certs/isrgrootx1.pem"
