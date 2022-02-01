@@ -19,8 +19,12 @@ LETSENCRYPT_CERT_PATH="$BP_DIR/certs/isrgrootx1.pem"
 
 echo "copying ${RDS_CERT_PATH} to ${BUILD_DIR}/rds-global-bundle.pem"
 cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
+echo "copying ${RDS_CERT_PATH} to ${CACHE_DIR}/rds-global-bundle.pem"
+cp ${RDS_CERT_PATH} $CACHE_DIR/rds-global-bundle.pem
 
 echo "copying ${LETSENCRYPT_CERT_PATH} to ${BUILD_DIR}/isrgrootx1.pem" 
 cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/isrgrootx1.pem
+echo "copying ${LETSENCRYPT_CERT_PATH} to ${CACHE_DIR}/isrgrootx1.pem" 
+cp ${LETSENCRYPT_CERT_PATH} $CACHE_DIR/isrgrootx1.pem
 
 exit $?
