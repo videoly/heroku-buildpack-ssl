@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
+# bin/compile <build-dir> <cache-dir> <env-dir>
 
-BUILD_DIR=$1
-BIN_DIR=$(cd $(dirname $0); pwd)
-RDS_CERT_PATH="$BIN_DIR/certs/rds-global-bundle.pem"
-LETSENCRYPT_CERT_PATH="$BIN_DIR/certs/isrgrootx1.pem"
+### Configure environment
 
-echo "copying ${RDS_CERT_PATH}"
+set -o errexit    # always exit on error
+set -o pipefail   # don't ignore exit codes when piping output
+unset GIT_DIR     # Avoid GIT_DIR leak from previous build steps
+
+### Configure directories
+
+BUILD_DIR=${1:-}
+CACHE_DIR=${2:-}
+ENV_DIR=${3:-}
+BP_DIR=$(cd "$(dirname "${0:-}")"; cd ..; pwd)
+
+RDS_CERT_PATH="$BP_DIR/certs/rds-global-bundle.pem"
+LETSENCRYPT_CERT_PATH="$BP_DIR/certs/isrgrootx1.pem"
+
+echo "copying ${RDS_CERT_PATH} to ${BUILD_DIR}/rds-global-bundle.pem"
 cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
 
-echo "copying ${LETSENCRYPT_CERT_PATH}"
+echo "copying ${LETSENCRYPT_CERT_PATH} to ${BUILD_DIR}/isrgrootx1.pem" 
 cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/isrgrootx1.pem
 
 exit $?
