@@ -18,14 +18,14 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 source $BP_DIR/lib/environment.sh
 
 ### main
-RDS_CERT_PATH="$BP_DIR/bin/certs/rds-global-bundle.pem"
-LETSENCRYPT_CERT_PATH="$BP_DIR/bin/certs/isrgrootx1.pem"
+CERT_PATH="$BP_DIR/bin/certs"
 
-echo "copying ${RDS_CERT_PATH} to ${CACHE_DIR}/rds-global-bundle.pem"
-cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
 
-echo "copying ${LETSENCRYPT_CERT_PATH} to ${CACHE_DIR}/isrgrootx1.pem" 
-cp ${LETSENCRYPT_CERT_PATH} $CACHE_DIR/isrgrootx1.pem
+echo "copying from ${CERT_PATH} to ${CACHE_DIR}"
+cp -r ${CERT_PATH}/* $CACHE_DIR
+
+ls -lah $CACHE_DIR
+
 
 write_export "$BP_DIR" "$BUILD_DIR" "$CACHE_DIR"
 
