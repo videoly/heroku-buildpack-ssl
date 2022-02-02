@@ -24,6 +24,6 @@ cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
 echo "copying ${LETSENCRYPT_CERT_PATH} to ${CACHE_DIR}/isrgrootx1.pem" 
 cp ${LETSENCRYPT_CERT_PATH} $CACHE_DIR/isrgrootx1.pem
 
-echo "export NODE_EXTRA_CA_CERTS=\"$CACHE_DIR/isrgrootx1.pem\"" >> $bp_dir/export
+write_export "$BP_DIR" "$BUILD_DIR" "$CACHE_DIR"
 
 exit $?
