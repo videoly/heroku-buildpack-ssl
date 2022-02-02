@@ -14,6 +14,9 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
+### Load dependencies
+source $BP_DIR/lib/environment.sh
+
 ### main
 RDS_CERT_PATH="$BP_DIR/bin/certs/rds-global-bundle.pem"
 LETSENCRYPT_CERT_PATH="$BP_DIR/bin/certs/isrgrootx1.pem"
