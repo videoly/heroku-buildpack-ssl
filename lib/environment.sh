@@ -3,6 +3,6 @@ write_export() {
   local build_dir="$2"
   local cache_dir="$3"
   local certs=""
-  for cert in $cache_dir; certs="$certs $cert"; done
+  for cert in $cache_dir; echo $cert; done
   echo "export NODE_EXTRA_CA_CERTS=\"$certs\"" >> $bp_dir/export
 }
