@@ -26,5 +26,6 @@ cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/isrgrootx1.pem
 ls -lah $BUILD_DIR
 ls -lah $CACHE_DIR
 ls -lah $ENV_DIR
+cat $ENV_DIR/NODE_ENV
 ls -lah $BP_DIR
 exit $?
