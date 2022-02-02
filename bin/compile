@@ -28,6 +28,6 @@ ls -lah $CACHE_DIR
 ls -lah $ENV_DIR
 ls -lah $BP_DIR
 
-export NODE_EXTRA_CA_CERTS=$BUILD_DIR/isrgrootx1.pem
+echo "export NODE_EXTRA_CA_CERTS=\"$BUILD_DIR/isrgrootx1.pem\"" >> $BP_DIR/export
 ls -lah $ENV_DIR
 exit $?
