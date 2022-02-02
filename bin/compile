@@ -14,19 +14,18 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
-### Load dependencies
-source $BP_DIR/lib/environment.sh
-
 ### main
 RDS_CERT_PATH="$BP_DIR/bin/certs/rds-global-bundle.pem"
 LETSENCRYPT_CERT_PATH="$BP_DIR/bin/certs/isrgrootx1.pem"
 
 echo "copying ${RDS_CERT_PATH} to ${BUILD_DIR}/rds-global-bundle.pem"
 cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
+echo "copying ${RDS_CERT_PATH} to /etc/ssl/certs/rds-global-bundle.pem"
+cp ${RDS_CERT_PATH} /etc/ssl/certs/rds-global-bundle.pem
 
 echo "copying ${LETSENCRYPT_CERT_PATH} to ${BUILD_DIR}/isrgrootx1.pem" 
 cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/isrgrootx1.pem
-
-write_export "$BP_DIR" "$BUILD_DIR"
+echo "copying ${LETSENCRYPT_CERT_PATH} to /etc/ssl/certs/isrgrootx1.pem" 
+cp ${LETSENCRYPT_CERT_PATH} /etc/ssl/certs/isrgrootx1.pem
 
 exit $?
