@@ -2,5 +2,7 @@ write_export() {
   local bp_dir="$1"
   local build_dir="$2"
   local cache_dir="$3"
-  echo "export NODE_EXTRA_CA_CERTS=\"$cache_dir/isrgrootx1.pem\"" >> $bp_dir/export
+  local certs=""
+  for cert in $cache_dir; certs="$certs $cert"
+  echo "export NODE_EXTRA_CA_CERTS=\"$certs\"" >> $bp_dir/export
 }
