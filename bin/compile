@@ -17,16 +17,20 @@ BP_DIR=$(cd $(dirname $0); pwd)
 RDS_CERT_PATH="$BP_DIR/certs/rds-global-bundle.pem"
 LETSENCRYPT_CERT_PATH="$BP_DIR/certs/isrgrootx1.pem"
 
-echo "ls ${RDS_CERT_PATH}"
-ls ${RDS_CERT_PATH}
+echo "RDS_CERT_PATH = ${RDS_CERT_PATH}"
 
-echo "ls ${LETSENCRYPT_CERT_PATH}"
-ls ${LETSENCRYPT_CERT_PATH}
+echo "LETSENCRYPT_CERT_PATH = ${LETSENCRYPT_CERT_PATH}"
+
+echo "BUILD_DIR = ${BUILD_DIR}"
+
+echo "BP_DIR = ${BP_DIR}"
 
 echo "copying ${RDS_CERT_PATH} to ${BUILD_DIR}/rds-global-bundle.pem"
 cp ${RDS_CERT_PATH} $BUILD_DIR/rds-global-bundle.pem
 
 echo "copying ${LETSENCRYPT_CERT_PATH} to ${BUILD_DIR}/isrgrootx1.pem" 
 cp ${LETSENCRYPT_CERT_PATH} $BUILD_DIR/isrgrootx1.pem
+
+echo "ls BUILD_DIR = ${BUILD_DIR}"
 
 exit $?
